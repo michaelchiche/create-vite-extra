@@ -1,38 +1,30 @@
 {
-  "name": "create-vite-extra",
-  "version": "2.0.2",
+  "name": "vite-react-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "license": "MIT",
-  "author": "Bjorn Lu",
-  "bin": {
-    "create-vite-extra": "index.js"
-  },
-  "files": [
-    "index.js",
-    "template-*",
-    "!template-*/dist",
-    "!template-*/node_modules",
-    "!template-*/pnpm-lock.yaml",
-    "!template-*/deno.lock"
-  ],
-  "main": "index.js",
-  "engines": {
-    "node": "^18.0.0 || >=20.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bluwy/create-vite-extra.git"
-  },
-  "bugs": {
-    "url": "https://github.com/bluwy/create-vite-extra/issues"
-  },
-  "homepage": "https://github.com/bluwy/create-vite-extra#readme",
   "scripts": {
-    "update-deps": "pnpm update -r --latest && node update-deno-deps.js"
+    "dev": "node server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
-    "kolorist": "^1.8.0",
-    "minimist": "^1.2.8",
-    "prompts": "^2.4.2"
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sirv": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
   }
 }
